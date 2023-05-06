@@ -9,19 +9,29 @@ function Home() {
   const [query, setQuery] = useState("");
   const [showImages, setShowImages] = useState(true);
   const [showVideos, setShowVideos] = useState(true);
+  const [isLoading, setIsLoading] = useState(false); // New state variable for loading
+
 
   useEffect(() => {
     const fetchData = async () => {
+      if (query.trim() === "") {
+        setImages([]); // Reset images if query is empty
+        return;
+      }
+
       try {
+        setIsLoading(true); // Set loading state to true when fetching data
+
         const response = await axios.get(
           `https://images-api.nasa.gov/search?q=${query}&media_type=${
             showImages ? "image" : ""
           }${showVideos ? ",video" : ""}`
         );
         setImages(response.data.collection.items);
-        
       } catch (error) {
         console.log(error);
+      } finally {
+        setIsLoading(false); // Set loading state to false once data fetching is complete
       }
     };
     fetchData();
@@ -42,16 +52,18 @@ function Home() {
 
   return (
     <div className="flex h-screen w-screen flex-col items-center justify-start gap-4 glass  overflow-x-hidden">
-      <div className="mt-8 h-1/5">texts</div>
-      <form className="glass h-2/5 sm:w-2/4 mt-4 flex flex-row items-center justify-between">
-        <input
+      <div className="mt-8 h-1/5">
+        <h1 className="font-bold text-lg text-gray-100">National Aeronautics and Space Administration</h1>
+      </div>
+      <div className="glass h-2/5 sm:w-2/4 mt-4 flex flex-row items-center justify-between">
+      <input
           type="text"
           placeholder="Search here ..."
           value={query}
           onChange={handleQueryChange}
           className="p-1 w-full"
         />
-      </form>
+      </div>
 
       <div className="flex items-center justify-center gap-1 mt-2 text-gray-100">
         <input
@@ -71,8 +83,11 @@ function Home() {
       </div>
 
       <div className="flex flex-col items-center justify center w-screen h-3/4 overflow-x-scroll text-gray-900 text-base">
-        <div className="sm:grid sm:gap-4 sm:grid-cols-2 sm:grid-rows-3 md:grid-cols-3 gap-3 flex flex-col pl-8 pr-5 items-start justify-center">
-          {images.map((image, index) => {
+      {isLoading ? (
+          <div class="loader"><div></div><div></div><div></div><div></div></div>
+        ) : (
+          <div className="sm:grid sm:gap-4 sm:grid-cols-2 sm:grid-rows-3 md:grid-cols-3 gap-3 flex flex-col pl-8 pr-5 items-start justify-center">
+            {images.map((image, index) => {
             
             const id = image.data[0].nasa_id;
           return (
@@ -107,7 +122,7 @@ function Home() {
             
           })}
         </div>
-      </div>
+        )}</div>
     </div>
   );
 }
