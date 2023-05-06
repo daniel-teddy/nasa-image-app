@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useEffect , useState } from 'react';
 import axios from 'axios';
 import { Link } from "react-router-dom";
-function ItemPage({ images }) {
+function ItemPage() {
   const { id } = useParams();
   const [description, setDescription] = useState("");
   const [name, setName] = useState("");
@@ -12,6 +12,8 @@ function ItemPage({ images }) {
   const [type, setType] = useState("");
   const nasa_id = id
   var donee = []
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -20,7 +22,7 @@ function ItemPage({ images }) {
         );
         // eslint-disable-next-line
         donee = response.data.collection.items[0].data[0]
-        console.log(donee);
+        console.log(response.data.collection.items[0]);
         const item_name = donee.title;
         setName(item_name);
         const created_at = donee.date_created;
@@ -32,6 +34,7 @@ function ItemPage({ images }) {
         
         const imageData =(response.data.collection.items[0].links[0].href)
         setAsset(imageData);
+        setIsLoading(false);
       } catch (error) {
         console.log(error);
       }
@@ -39,6 +42,9 @@ function ItemPage({ images }) {
 
     fetchData();
   }, [nasa_id]);
+  if (isLoading) {
+    return <div>Loading...</div>; // Replace this with your actual loader component or HTML structure
+  }
 
   return (
     <div className="glass flex items-center justify-center h-screen w-screen overflow-x-none">

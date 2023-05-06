@@ -84,7 +84,7 @@ function Home() {
 
       <div className="flex flex-col items-center justify center w-screen h-3/4 overflow-x-scroll text-gray-900 text-base">
       {isLoading ? (
-          <div class="loader"><div></div><div></div><div></div><div></div></div>
+          <div className="loader"><div></div><div></div><div></div><div></div></div>
         ) : (
           <div className="sm:grid sm:gap-4 sm:grid-cols-2 sm:grid-rows-3 md:grid-cols-3 gap-3 flex flex-col pl-8 pr-5 items-start justify-center">
             {images.map((image, index) => {
