@@ -1,0 +1,22 @@
+
+
+.glass{
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.slate-800{
+    background-color: #7f92aa;
+}
+.h2-size{
+    width: 17rem;
+}
+md:\small-h2-size{
+    width: 13rem;
+}
+.custombackground{
+    background: linear-gradient(90deg, rgba(89, 34, 143,1) 20.050007548309182%,rgba(89, 33, 142,1) 20.050007548309182%,rgba(135, 18, 110,1) 80.05151721014494%);
+}
