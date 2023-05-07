@@ -8,6 +8,7 @@ function ItemPage() {
   const [description, setDescription] = useState("");
   const [name, setName] = useState("");
   const [asset, setAsset] = useState("");
+  const [data_video, setData_video] = useState("");
   const [time, setTime] = useState("");
   const [type, setType] = useState("");
   const nasa_id = id
@@ -24,6 +25,7 @@ function ItemPage() {
         donee = response.data.collection.items[0].data[0]
         console.log(response.data.collection.items[0]);
         const item_name = donee.title;
+        
         setName(item_name);
         const created_at = donee.date_created;
         setTime(created_at);
@@ -41,7 +43,30 @@ function ItemPage() {
     };
 
     fetchData();
+
+
   }, [nasa_id]);
+
+  useEffect(() => {
+    const fetchVideo = async () => {
+      try {
+        const image_link = 'https://images-assets.nasa.gov/video/' + nasa_id + '/collection.json'
+        const response = await axios.get(
+          image_link
+        );
+        
+        const data_video = response.data.filter((data) => data.endsWith(".mp4"));
+        console.log(data_video[1]);
+        const video_file = data_video[1];
+        const replacedData = video_file.replace(/ /g, '%20');
+        setData_video(replacedData);
+      } catch (error) {
+        console.log(error)
+      }
+    };
+    fetchVideo();
+  })
+    
   if (isLoading) {
     return <div>Loading...</div>; // Replace this with your actual loader component or HTML structure
   }
@@ -55,11 +80,18 @@ function ItemPage() {
 
       <div className="flex flex-col items-center justify-center font-semibold gap-6  ">
       <h1 className="mt-6 font-bold text-lg">{name}</h1>
+      {type === 'image' && 
       <img
-                  src={asset}
-                  alt={asset}
-                  className="image"
-                />
+      src={asset}
+      alt={asset}
+      className="image"
+    />
+      }
+      {type === 'video' && 
+      <video className="image w-96" controls>
+      <source src={data_video} type="video/mp4" />
+    </video>
+    }
       <div className="flex flex-col items-start justify-center">
       <h1>Created at: {time}</h1>
       <h1>Media Type: {type}</h1>
