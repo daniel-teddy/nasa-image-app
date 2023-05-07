@@ -49,3 +49,34 @@ The NASA Image App is released under the MIT License.
 
 
 
+## Things I would do to improve the app :
+
+
+# 1. Implement Pagination: 
+2. Currently, the app displays all the search results on a single page. Implementing pagination can improve performance by loading and displaying the results in smaller chunks, enhancing the user experience.
+
+# 2. Add Image Filtering: 
+Expand the filtering options to allow users to filter images based on additional criteria, such as image size. This can provide users with more control over their search results and make the app more versatile.
+
+# 3. Implement Favorites or Save Functionality: 
+Introduce a feature that allows users to save their favorite images or create collections. This can enhance user engagement and provide a personalized experience.
+
+# 4. Implement Image Download: 
+Add a download functionality that allows users to save the images locally. This feature can be useful for users who want to keep a copy of the images for offline use or further editing.
+
+# 5. Improve Error Handling: 
+Enhance the error handling mechanism to provide meaningful error messages to users when there are issues with the API request or any other errors occur. This can help users troubleshoot problems and understand why certain operations failed.
+
+# 6. Optimize Performance: 
+Analyze and optimize the performance of the app by identifying any bottlenecks or areas where the app can be optimized. This can include optimizing API requests, implementing caching mechanisms, or minimizing unnecessary re-renders of components.
+
+# 7. Implement User Authentication: 
+If you want to extend the app's functionality, consider implementing user authentication. This can enable features like user-specific saved searches, personalized recommendations, or social sharing of images.
+
+# 8. Add Unit Tests: 
+Write unit tests to verify the functionality of critical components and ensure that new changes or updates do not introduce bugs. This can help maintain the stability and reliability of the app.
+
+# 9. Gather User Feedback: 
+Collect feedback from users to understand their needs and pain points. This feedback can guide further improvements and help prioritize the development roadmap.
+
+If I have more time those are the things I would focus on working on.
