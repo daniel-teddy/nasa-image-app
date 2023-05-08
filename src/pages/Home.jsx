@@ -9,7 +9,7 @@ function Home() {
   const [query, setQuery] = useState("");
   const [showImages, setShowImages] = useState(true);
   const [showVideos, setShowVideos] = useState(true);
-  const [isLoading, setIsLoading] = useState(false); // New state variable for loading
+  const [isLoading, setIsLoading] = useState(false); 
 
 
   useEffect(() => {
@@ -52,8 +52,8 @@ function Home() {
 
   return (
     <div className="flex h-screen w-screen flex-col items-center justify-start gap-4 glass  overflow-x-hidden">
-      <div className="mt-8 h-1/5">
-        <h1 className="font-bold text-lg text-gray-100">National Aeronautics and Space Administration</h1>
+      <div className="mt-8 h-1/5 text-center">
+        <h1 className="font-bold text-lg text-gray-100 ">National Aeronautics and Space Administration</h1>
       </div>
       <div className="glass h-2/5 sm:w-2/4 mt-4 flex flex-row items-center justify-between">
       <input
