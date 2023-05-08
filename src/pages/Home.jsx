@@ -54,6 +54,7 @@ function Home() {
     <div className="flex h-screen w-screen flex-col items-center justify-start gap-4 glass  overflow-x-hidden">
       <div className="mt-8 h-1/5 text-center">
         <h1 className="font-bold text-lg text-gray-100 ">National Aeronautics and Space Administration</h1>
+        <h3 className="font-semibold text-sm text-gray-100 ">We bring you the latest images, videos from America's space agency. Get the latest updates on NASA missions, and learn about our quest to reveal the unknown and benefit all humankind.</h3>
       </div>
       <div className="glass h-2/5 sm:w-2/4 mt-4 flex flex-row items-center justify-between">
       <input
@@ -112,8 +113,9 @@ function Home() {
                 </img>
               )}
               </div>
-            <div className=" flex items-center justify-center w-64 sm:w-52">
+            <div className=" flex flex-col items-center justify-center w-64 sm:w-52">
               <h2>{image.data[0].title}</h2>
+              <h4>type: {image.data[0].media_type}</h4>
               
             </div>
             </div>

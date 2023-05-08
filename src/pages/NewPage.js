@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from "react-router-dom";
+import {HiHome} from 'react-icons/hi'
 function ItemPage() {
   const { id } = useParams();
   const [description, setDescription] = useState("");
@@ -37,7 +38,9 @@ function ItemPage() {
 
         const imageData = (response.data.collection.items[0].links[0].href)
         setAsset(imageData);
-        setIsLoading(false);
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 1500);
       } catch (error) {
         console.log(error);
       }
@@ -62,6 +65,7 @@ function ItemPage() {
         const replacedData = video_file.replace(/ /g, '%20');
         setData_video(replacedData);
         setIsVideoLoaded(true);
+        
       } catch (error) {
         console.log(error)
       }
@@ -78,11 +82,12 @@ function ItemPage() {
   return (
     <div className="glass flex items-center justify-center h-screen w-screen overflow-x-none">
       <div className="flex flex-col items-start justify-start glass h-screen w-screen p-4 gap-6 overflow-x-auto">
-        <Link className=" text-gray-100 underline text-sm font-normal" to={`/`} >
-          <h1>home</h1>
+        <Link className=" text-gray-100 underline w-40 flex flex-row items-center justify-center text-lg font-bold" to={`/`} >
+          <HiHome />
+          <h1>Home</h1>
         </Link>
 
-        <div className="flex flex-col items-center justify-center font-semibold gap-6  ">
+        <div className="flex flex-col items-center justify-center font-semibold gap-6 text-gray-100">
           <h1 className="mt-6 font-bold text-lg text-center">{name}</h1>
           {type === 'image' &&
             <img

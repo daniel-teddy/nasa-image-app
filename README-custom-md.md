@@ -53,7 +53,7 @@ The NASA Image App is released under the MIT License.
 
 
 # 1. Implement Pagination: 
-2. Currently, the app displays all the search results on a single page. Implementing pagination can improve performance by loading and displaying the results in smaller chunks, enhancing the user experience.
+Currently, the app displays all the search results on a single page. Implementing pagination can improve performance by loading and displaying the results in smaller chunks, enhancing the user experience.
 
 # 2. Add Image Filtering: 
 Expand the filtering options to allow users to filter images based on additional criteria, such as image size. This can provide users with more control over their search results and make the app more versatile.
