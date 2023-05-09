@@ -62,17 +62,17 @@ function Home() {
             <div className="sm:ml-4 sm:w-1/4 flex flex-row items-center justify-around gap-4 mt-2">
                
                 
-                <div className="flex flex-row items-center justify-around gap-1 font-semibold">
+                <div className="flex flex-row items-center justify-around gap-2 font-semibold">
                     <input type="checkbox" checked={showImages}
           onChange={handleImageCheckboxChange} />
-                    <label HtmlFor="image" className="pb-1">Image</label>
+                    <label HtmlFor="image" className="">Image</label>
                 </div>
                 
                 
-                <div className="flex flex-row items-center justify-around gap-1 font-semibold">
+                <div className="flex flex-row items-center justify-around gap-2 font-semibold">
                     <input type="checkbox" checked={showVideos}
           onChange={handleVideoCheckboxChange} />
-                    <label HtmlFor="video" className="pb-1">Videos</label>
+                    <label HtmlFor="video" className="">Videos</label>
                 </div>
             </div>
         </div>
@@ -90,7 +90,7 @@ function Home() {
                 <Link key={index}
                 to={`/asset/${id}`}>
                     <div className="h-[24rem] w-80 sm:h-[16rem] sm:w-[14rem] sm:mt-3 cursor-pointer flex flex-col items-center justify-start bg-gray-300 text-gray-800 font-semibold text-sm p-1 rounded">
-                        <div className="image border border-gray-800 rounded">
+                        <div className=" rounded">
                         {image.data[0].media_type === "image" && showImages && (
                             <img src={image.links[0].href} alt={image.data[0].title} className="h-[19rem] sm:h-[13rem] sm:w-[13rem] w-[19rem] rounded" />
                         )}

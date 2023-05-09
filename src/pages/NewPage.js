@@ -82,9 +82,9 @@ function ItemPage() {
   return (
     <div className="flex items-center justify-center h-screen w-screen overflow-x-none">
       <div className="flex flex-col items-start justify-start h-screen w-screen p-4 gap-6 overflow-x-auto">
-        <Link className=" text-gray-100 underline w-40 flex flex-row items-center justify-center text-lg font-bold" to={`/`} >
+        <Link className=" text-gray-100 w-40 flex flex-row items-center justify-center text-lg font-bold no-underline" to={`/`} >
           <HiHome />
-          <h1>Home</h1>
+          <h1 className="pt-1 pl-1">Home</h1>
         </Link>
 
         <div className="flex flex-col items-center justify-center font-semibold gap-6 text-gray-100">
@@ -95,11 +95,11 @@ function ItemPage() {
             <img
               src={asset}
               alt={asset}
-              className="image w-80"
+              className="image w-80 sm:w-[37rem] md::w-[42rem] rounded-lg"
             />
           }
           {type === 'video' && isVideoLoaded &&
-            <video className="image w-80" controls>
+            <video className="image w-80 sm:w-[37rem] md::w-[42rem] rounded-lg" controls>
               <source src={data_video} type="video/mp4" />
             </video>
           }
