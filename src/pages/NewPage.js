@@ -74,14 +74,14 @@ function ItemPage() {
   })
 
   if (isLoading) {
-    return <div className="glass flex items-center justify-center h-screen w-screen overflow-x-none">
+    return <div className="flex items-center justify-center h-screen w-screen overflow-x-none">
       <div className="loader"><div></div><div></div><div></div><div></div></div>
     </div>
   }
 
   return (
-    <div className="glass flex items-center justify-center h-screen w-screen overflow-x-none">
-      <div className="flex flex-col items-start justify-start glass h-screen w-screen p-4 gap-6 overflow-x-auto">
+    <div className="flex items-center justify-center h-screen w-screen overflow-x-none">
+      <div className="flex flex-col items-start justify-start h-screen w-screen p-4 gap-6 overflow-x-auto">
         <Link className=" text-gray-100 underline w-40 flex flex-row items-center justify-center text-lg font-bold" to={`/`} >
           <HiHome />
           <h1>Home</h1>
@@ -89,21 +89,25 @@ function ItemPage() {
 
         <div className="flex flex-col items-center justify-center font-semibold gap-6 text-gray-100">
           <h1 className="mt-6 font-bold text-lg text-center">{name}</h1>
+          <div>
+          <div className="sm:flex sm:flex-row sm:items-center sm:justify-evenly sm:gap-4">
           {type === 'image' &&
             <img
               src={asset}
               alt={asset}
-              className="image"
+              className="image w-80"
             />
           }
           {type === 'video' && isVideoLoaded &&
-            <video className="image w-96" controls>
+            <video className="image w-80" controls>
               <source src={data_video} type="video/mp4" />
             </video>
           }
           <div className="flex flex-col items-start justify-center">
             <h1>Created at: {time}</h1>
             <h1>Media Type: {type}</h1>
+          </div>
+          </div>
           </div>
           <div className="flex flex-col items-start justify-center ">
             <h1>Description: {description}</h1>

@@ -9,13 +9,15 @@ import Home from "./pages/Home";
 
 import NewPage from "./pages/NewPage";
 
+
 function App() {
   return (
 
-    <div className="App custombackground h-screen w-screen">
+    <div className="App bg-gray-800 h-screen w-screen">
       <Routes>
         
         <Route path='/' element={<Home />} />
+        
         <Route path='/asset/:id' element={<NewPage />} />
        {/*  <Route path='*' element={<Error />} /> */}
       </Routes>

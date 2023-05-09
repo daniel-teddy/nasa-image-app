@@ -51,81 +51,64 @@ function Home() {
  
 
   return (
-    <div className="flex h-screen w-screen flex-col items-center justify-start gap-2 glass  overflow-x-hidden">
-      <div className="mt-4 h-1/5 text-center">
-        <h1 className="font-bold text-lg text-gray-100 ">National Aeronautics and Space Administration</h1>
-        <h3 className="font-semibold text-sm text-gray-100 ">We bring you the latest images, videos from America's space agency. Get the latest updates on NASA missions, and learn about our quest to reveal the unknown and benefit all humankind.</h3>
-      </div>
-      <div className="glass h-2/5 sm:w-2/4 mt-2 flex flex-row items-center justify-between">
-      <input
-          type="text"
-          placeholder="Search here ..."
+    <div className="bg-gray-800 text-gray-200 h-screen w-screen">
+    <div className="flex flex-col items-center justify-start h-screen w-screen overflow-x-hidden p-1">
+        
+        <div className="w-screen h-1/6 flex flex-col sm:h-[8rem] items-center justify-center sm:justify-between m-2 ">
+            <h1 className='font-bold text-lg'>Nasa Image & Video Search Portal</h1>
+            <input type="text" name="searchquerry" placeholder="Search here ..."
           value={query}
-          onChange={handleQueryChange}
-          className="p-1 w-full"
-        />
-      </div>
-
-      <div className="flex items-center justify-center gap-1 mt-2 text-gray-100">
-        <input
-          type="checkbox"
-          checked={showImages}
-          onChange={handleImageCheckboxChange}
-          className="h-4 w-4"
-        />
-        <label htmlFor="image">image</label>
-        <input
-          type="checkbox"
-          checked={showVideos}
-          onChange={handleVideoCheckboxChange}
-          className="h-4 w-4 ml-6"
-        />
-        <label htmlFor="video">video</label>
-      </div>
-
-      <div className="flex flex-col items-center justify center w-screen h-3/4 overflow-x-scroll text-gray-900 text-base">
-      {isLoading ? (
-          <div className="loader"><div></div><div></div><div></div><div></div></div>
+          onChange={handleQueryChange} id="" className="w-3/4 p-1 text-gray-800 rounded border border-gray-800 mt-4" />
+            <div className="sm:ml-4 sm:w-1/4 flex flex-row items-center justify-around gap-4 mt-2">
+               
+                
+                <div className="flex flex-row items-center justify-around gap-1 font-semibold">
+                    <input type="checkbox" checked={showImages}
+          onChange={handleImageCheckboxChange} />
+                    <label HtmlFor="image" className="pb-1">Image</label>
+                </div>
+                
+                
+                <div className="flex flex-row items-center justify-around gap-1 font-semibold">
+                    <input type="checkbox" checked={showVideos}
+          onChange={handleVideoCheckboxChange} />
+                    <label HtmlFor="video" className="pb-1">Videos</label>
+                </div>
+            </div>
+        </div>
+        {isLoading ? (
+          <div className="flex flex-col items-center justify-center h-3/4">
+            <div className="loader"><div></div><div></div><div></div><div></div></div>
+          </div>
         ) : (
-          <div className="sm:grid sm:gap-4 sm:grid-cols-2 sm:grid-rows-3 md:grid-cols-3 gap-3 flex flex-col pl-8 pr-5 items-start justify-center">
+        <div className="w-screen h-5/6 flex flex-col items-center justify-between pl-8 pr-5 sm:grid sm:gap-4 sm:grid-cols-2 sm:grid-rows md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3  sm:p-1 overflow-x-auto">
+            
             {images.map((image, index) => {
             
             const id = image.data[0].nasa_id;
-          return (
-            <Link
-              key={index}
-              to={`/asset/${id}`}>
-            <div
-              className="image-card glass flex flex-col items-center justify-center p-1 cursor-pointer"
-            >
-              <div className="flex items-center justify-center">
-              {image.data[0].media_type === "image" && showImages && (
-                <img
-                  src={image.links[0].href}
-                  alt={image.data[0].title}
-                  className="image"
-                />
-              )}
-              {image.data[0].media_type === "video" && showVideos && (
-                <img controls className="image" 
-                src={image.links[0].href}
-                alt={image.data[0].title}  >
-                </img>
-              )}
-              </div>
-            <div className=" flex flex-col items-center justify-center w-64 sm:w-52">
-              <h2>{image.data[0].title}</h2>
-              <h4>type: {image.data[0].media_type}</h4>
-              
-            </div>
-            </div>
-            </Link>
-          )  
-            
-          })}
+            return (
+                <Link key={index}
+                to={`/asset/${id}`}>
+                    <div className="h-[24rem] w-80 sm:h-[16rem] sm:w-[14rem] sm:mt-3 cursor-pointer flex flex-col items-center justify-start bg-gray-300 text-gray-800 font-semibold text-sm p-1 rounded">
+                        <div className="image border border-gray-800 rounded">
+                        {image.data[0].media_type === "image" && showImages && (
+                            <img src={image.links[0].href} alt={image.data[0].title} className="h-[19rem] sm:h-[13rem] sm:w-[13rem] w-[19rem] rounded" />
+                        )}
+                        {image.data[0].media_type === "video" && showVideos && (
+                            <img src={image.links[0].href} alt={image.data[0].title} className="h-[19rem] sm:h-[13rem] sm:w-[13rem] w-[19rem] rounded" />
+                        )}
+                        </div>
+                        <div className="w-full pl-2 flex flex-col items-start justify-center h-[6rem]">
+                            <span className="title">{image.data[0].title}</span>
+                            <span className="type">type: {image.data[0].media_type}</span>
+                        </div>
+                    </div>
+                </Link>
+            )
+            })}
         </div>
-        )}</div>
-    </div>
+    )}</div>
+</div>
   );
 }
 
